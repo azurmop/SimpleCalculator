@@ -1,7 +1,7 @@
 # 1
 name: Simple Workflow Example
 # 2
-on: [push]
+on: [ push ]
 
 # 3
 jobs:
@@ -23,3 +23,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "It is $(date)"
+
+  azur:
+    name: My Job Azur
+    runs-on: ubuntu-latest
+    steps:
+      - name: Yet another step
+        run: |
+        pwd
+        whoami
