@@ -29,6 +29,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Yet another step
-        run: |
-        pwd
-        whoami
+        run: pwd
