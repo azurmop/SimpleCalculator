@@ -43,7 +43,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private val engine by lazy {
