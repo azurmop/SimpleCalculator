@@ -21,12 +21,14 @@ jobs:
           expose-version-name: 'true'
           expose-version-code: 'false'
       - name: Extract variables
-        run: echo "CURRENT_TIMESTAMP=$(date +%s) >> >> $GITHUB_ENV"
+        run: |
+         echo "CURRENT_TIMESTAMP=$(date +%s) >> >> $GITHUB_ENV"
+         echo ${{env.ANDROID_VERSION_NAME}}
       - name: Bump versions
         uses: damienaicheh/update-android-version-gradle-action@v1.0.0
         with:
           build-gradle-path: 'app/build.gradle'
-          version-code: ${{ env.CURRENT_TIMESTAMP }}
+          version-code: ${{env.CURRENT_TIMESTAMP}}
           version-name: ${{env.ANDROID_VERSION_NAME}}
 #      - name: Run unit tests
 #        run: ./gradlew testDebugUnitTest
