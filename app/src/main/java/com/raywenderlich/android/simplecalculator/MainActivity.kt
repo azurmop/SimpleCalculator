@@ -39,10 +39,12 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
 import kotlinx.android.synthetic.main.activity_main.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -60,11 +62,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         registerButtonClick()
         textResult.isSelected = true
 
-        Toast.makeText(
-            this,
-            "Version code: ${BuildConfig.VERSION_CODE}",
-            Toast.LENGTH_LONG
-        ).show()
+        AlertDialog.Builder(this).apply {
+            setTitle("App info")
+            setMessage(buildString {
+                append("VERSION_CODE: ${BuildConfig.VERSION_CODE}")
+                append("\n")
+                append("VERSION_NAME: ${BuildConfig.VERSION_NAME}")
+                append("\n")
+                append("Date: ${parseEpoch(BuildConfig.VERSION_CODE.toLong())}")
+            })
+            create()
+        }.show()
+    }
+
+    private fun parseEpoch(timestamp: Long): String {
+        return SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.US).format(timestamp)
     }
 
     /**
