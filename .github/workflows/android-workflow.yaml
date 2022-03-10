@@ -20,8 +20,9 @@ jobs:
         with:
           expose-version-name: 'true'
           expose-version-code: 'false'
-      - name: Bump versions
+      - name: Extract variables
         run: echo "CURRENT_TIMESTAMP=$(date +%s)"
+      - name: Bump versions
         uses: damienaicheh/update-android-version-gradle-action@v1.0.0
         with:
           build-gradle-path: 'app/build.gradle'
