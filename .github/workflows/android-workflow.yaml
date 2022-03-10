@@ -9,7 +9,7 @@ jobs:
       - name: Extract variables
         env:
           CURRENT_TIMESTAMP: $(date +%s)
-        run:
+        run: echo $CURRENT_TIMESTAMP
 
       - name: Print custom variables
         run: ${{ env.CURRENT_TIMESTAMP }}
