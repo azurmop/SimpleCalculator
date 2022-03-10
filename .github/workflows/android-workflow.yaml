@@ -5,6 +5,14 @@ jobs:
     name: Build and run tests
     runs-on: macos-latest
     steps:
+
+      - name: Extract variables
+        run: echo "CURRENT_TIMESTAMP=$(date +%s) >> $GITHUB_ENV"
+
+      - name: Print custom variables
+        run: echo $CURRENT_TIMESTAMP
+
+
       - name: Checkout current repository in ubuntu's file system
         uses: actions/checkout@v1
       - name: Setup JDK 1.8
@@ -20,18 +28,13 @@ jobs:
         with:
           expose-version-name: 'true'
           expose-version-code: 'false'
-      - name: Extract variables
-        run: echo "CURRENT_TIMESTAMP=$(date +%s) >> $GITHUB_ENV"
-
-      - name: Print custom variables
-        run: echo $CURRENT_TIMESTAMP
 
       - name: Bump versions
         uses: damienaicheh/update-android-version-gradle-action@v1.0.0
         with:
           build-gradle-path: 'app/build.gradle'
-          version-code: ${{env.CURRENT_TIMESTAMP}}
-          version-name: ${{env.ANDROID_VERSION_NAME}}
+          version-code: ${{ env.CURRENT_TIMESTAMP }}
+          version-name: ${{ env.ANDROID_VERSION_NAME }}
 #      - name: Run unit tests
 #        run: ./gradlew testDebugUnitTest
 #      - name: Run instrumentation tests
