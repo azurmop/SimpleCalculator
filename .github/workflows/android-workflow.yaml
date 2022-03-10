@@ -22,7 +22,7 @@ jobs:
           expose-version-code: 'false'
       - name: Extract variables
         run: |
-         echo "CURRENT_TIMESTAMP=$(date +%s) >> >> $GITHUB_ENV"
+         echo "CURRENT_TIMESTAMP=$(date +%s) >> $GITHUB_ENV"
          echo ${{env.ANDROID_VERSION_NAME}}
       - name: Bump versions
         uses: damienaicheh/update-android-version-gradle-action@v1.0.0
