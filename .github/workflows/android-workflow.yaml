@@ -7,10 +7,11 @@ jobs:
     steps:
 
       - name: Extract variables
-        run: echo "CURRENT_TIMESTAMP=$(date +%s) >> $GITHUB_ENV"
+        env:
+          CURRENT_TIMESTAMP: $(date +%s)
 
       - name: Print custom variables
-        run: ${{ CURRENT_TIMESTAMP }}
+        run: ${{ env.CURRENT_TIMESTAMP }}
 
 
       - name: Checkout current repository in ubuntu's file system
