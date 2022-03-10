@@ -24,8 +24,8 @@ jobs:
         uses: damienaicheh/update-android-version-gradle-action@v1.0.0
         with:
           build-gradle-path: 'app/build.gradle'
-          version-code: date +%s
-          version-name: $ANDROID_VERSION_NAME
+          version-code: ${{date +%s}}
+          version-name: ${{env.ANDROID_VERSION_NAME}}
 #      - name: Run unit tests
 #        run: ./gradlew testDebugUnitTest
 #      - name: Run instrumentation tests
