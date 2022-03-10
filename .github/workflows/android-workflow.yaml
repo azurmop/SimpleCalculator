@@ -7,7 +7,7 @@ jobs:
     steps:
 
       - name: Extract variables
-        run: echo "{CURRENT_TIMESTAMP}={$(date +%s)}" >> $GITHUB_ENV
+        run: echo "CURRENT_TIMESTAMP=$(date +%s)" >> $GITHUB_ENV
 
       - name: Print custom variables
         run: echo ${{ env.CURRENT_TIMESTAMP }}
