@@ -24,7 +24,7 @@ jobs:
         run: echo "CURRENT_TIMESTAMP=$(date +%s) >> $GITHUB_ENV"
 
       - name: Print custom variables
-        run: echo ${{CURRENT_TIMESTAMP}}
+        run: echo $CURRENT_TIMESTAMP
 
       - name: Bump versions
         uses: damienaicheh/update-android-version-gradle-action@v1.0.0
