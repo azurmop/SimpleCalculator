@@ -15,15 +15,19 @@ jobs:
 #        run: ls -la
 #      - name: Java version
 #        run: java -version
+      - name: Expose Android version code and name
+        uses: michpohl/expose-android-build.gradle-version-code-and-name@v1.0.0
+        with:
+          expose-version-name: 'true'
+          expose-version-code: 'false'
       - name: Bump versions
         uses: damienaicheh/update-android-version-gradle-action@v1.0.0
         with:
           build-gradle-path: 'app/build.gradle'
-          version-code: 2
-          version-name: '2.0'
-          print-file: true
-      - name: Run unit tests
-        run: ./gradlew testDebugUnitTest
+          version-code: date +%s
+          version-name: $ANDROID_VERSION_NAME
+#      - name: Run unit tests
+#        run: ./gradlew testDebugUnitTest
 #      - name: Run instrumentation tests
 #        uses: reactivecircus/android-emulator-runner@v2
 #        with:
