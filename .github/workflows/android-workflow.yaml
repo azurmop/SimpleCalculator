@@ -30,11 +30,18 @@ jobs:
       - name: Generate Signed APK
         run: ./gradlew assembleRelease
 
+      - name: Upload APK
+        uses: actions/upload-artifact@v1
+        with:
+          name: Outputs
+          path: app/build/outputs/apk/release/
+
       - name: Generate Signed Bundle
         run: ./gradlew bundleRelease
 
-      - name: Upload Artifacts
+      - name: Upload Bundle
         uses: actions/upload-artifact@v1
         with:
-          name: My APK!
-          path: app/build/outputs/apk/release/
+          name: Outputs
+          path: app/build/outputs/bundle/release/
+
