@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 append("\n")
                 append("VERSION_NAME: ${BuildConfig.VERSION_NAME}")
                 append("\n")
-                append("Date: ${parseEpoch(BuildConfig.VERSION_CODE.toLong())}")
+                append("Date: ${parseEpoch(BuildConfig.VERSION_CODE * 1_000L)}")
             })
             create()
         }.show()
