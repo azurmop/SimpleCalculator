@@ -19,6 +19,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+      - name: Run unit tests
+        run: ./gradlew testDebugUnitTest
 #      - name: Print contents in current directory
 #        run: ls -la
 #      - name: Java version
@@ -35,8 +37,6 @@ jobs:
           build-gradle-path: 'app/build.gradle'
           version-code: ${{ env.CURRENT_TIMESTAMP }}
           version-name: ${{ env.ANDROID_VERSION_NAME }}
-#      - name: Run unit tests
-#        run: ./gradlew testDebugUnitTest
 #      - name: Run instrumentation tests
 #        uses: reactivecircus/android-emulator-runner@v2
 #        with:
